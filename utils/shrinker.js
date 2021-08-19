@@ -19,7 +19,8 @@ function shrinkData() {
     // const CASE_DATA_PATH = './../src/assets/DOH COVID Data Drop_ 20210721 - 04 Case Information 2021 - DateRepConf July 14-21.csv';
     // const CASE_DATA_PATH = './../src/assets/DOH_COVID_Data_Drop__20210725_-_04_Case_Information_2021_-_DateRepConf_June_27_-_July_25.csv';
     // const CASE_DATA_PATH = './../src/assets/DOH COVID Data Drop_ 20210721 - 04 Case Information 2021.csv';
-    const CASE_DATA_PATH = './../src/assets/DOH COVID Data Drop_ 20210816 - 04 Case Information.csv';
+    // const CASE_DATA_PATH = './../src/assets/DOH COVID Data Drop_ 20210816 - 04 Case Information.csv';
+    const CASE_DATA_PATH = './../../DOH COVID Data Drop_ 20210819 - 04 Case Information.csv'
 
     let deduped = {};
 

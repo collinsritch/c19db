@@ -1,0 +1,117 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.chart-div{
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-left:7%;
+    margin-right:7%;
+    margin-bottom:1%;
+}
+
+.main-chart{
+    display: flex;
+    flex: row;
+    justify-content: center;
+    background-color: white;
+    padding:1rem;
+    border-radius: 17px;
+    margin-bottom:1%;
+    width: 100%;
+    height: 60vh;
+}
+
+.right-data-container{
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: left;
+    background-color:white;
+    padding-right: 4%;
+    padding-left: 2%;
+    padding-bottom:0.5rem;
+    border-radius:17px;
+    max-width:15%;
+    color: #2C3E50;
+    /* color:rgba(33,147,176,1); */
+}
+
+
+
+.right-data-container h2, p{
+    margin-bottom:0;
+    margin-top:0.5rem;
+}
+
+.daily-graph-tooltip{
+    /* background-color: rgba(143, 154, 161, 0.815); */
+    background-color:white;
+    border-radius: 10px;
+    border-color: rgba(189, 195, 199, 0.678);
+    border-width: 1px;
+    border-style: solid;
+    padding:0.5rem 1rem 1rem 1rem;
+    color:#2C3E50;
+}
+
+.tooltip-date{
+    font-weight: bold;
+}
+
+.tooltip-data{
+    color:rgba(33,147,176,1)
+}
+
+.week-day-switch{
+    margin-bottom:1rem;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    color:#2C3E50;
+    font-weight: bold;
+}
+#vax-chart{
+    margin-bottom:0;
+}
+
+#vax-chart-div{
+    margin-bottom:0.5%;
+}
+
+.vax-page-link{
+    margin-right:7.8%;
+    margin-top: 0;
+    display:flex;
+    flex-direction: row;
+    justify-content:end;
+    margin-bottom:1rem;
+}
+
+#vax-link-a{
+    display:flex;
+    flex-direction: row;
+    justify-content:end;
+    align-items: center;
+    color:rgba(33,147,176,1);
+}
+
+#vax-link-icon{
+    width:1rem;
+    height:1rem;
+}
+
+.vax-page-link a{
+    color:rgba(33,147,176,1);
+}
+
+@media screen and (max-width: 1761px) {
+    .chart-div {
+        margin-right: calc(7% + 10px);
+        margin-left: calc(7% + 10px);
+    }   
+}

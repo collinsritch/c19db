@@ -1,0 +1,14 @@
+.info-page{
+    margin: 7%
+}
+
+.data-info{
+    background-color: white;
+    margin-top: 2%;
+    padding: 1%;
+    border-radius: 11px;
+}
+
+.data-info a{
+    color: rgb(33,147,176);
+}

@@ -1,0 +1,7 @@
+<<<<<<< HEAD
+{"counts":{"totalCaseCount":42808,"deathCount":95,"newCaseCount":6550,"recoveryCount":2128,"activeCaseCount":40585,"daily":{"2021-07-14":{"newCase":3800,"recovery":791,"death":25,"cumulative":3800},"2021-07-15":{"newCase":5212,"recovery":640,"death":23,"cumulative":9012},"2021-07-16":{"newCase":5667,"recovery":312,"death":18,"cumulative":14679},"2021-07-17":{"newCase":6030,"recovery":173,"death":17,"cumulative":20709},"2021-07-18":{"newCase":5399,"recovery":98,"death":6,"cumulative":26108},"2021-07-19":{"newCase":5639,"recovery":19,"death":4,"cumulative":31747},"2021-07-20":{"newCase":4511,"recovery":40,"death":0,"cumulative":36258},"2021-07-21":{"newCase":6550,"recovery":55,"death":2,"cumulative":42808}},"weekly":{}},"graphData":{"daily":[{"date":"2021-07-14","count":3800},{"date":"2021-07-15","count":5212},{"date":"2021-07-16","count":5667},{"date":"2021-07-17","count":6030},{"date":"2021-07-18","count":5399},{"date":"2021-07-19","count":5639},{"date":"2021-07-20","count":4511},{"date":"2021-07-21","count":6550}],"weekly":[]}}
+=======
+version https://git-lfs.github.com/spec/v1
+oid sha256:823bfa0cb303ee06da1ec57acf4824ef9fb71d9b5d7e339e1cea1bde83e24ace
+size 2098
+>>>>>>> f801f08eb068fe4acf71f1a427941c52cb529e21

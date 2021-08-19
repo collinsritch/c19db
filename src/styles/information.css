@@ -1,0 +1,144 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.main-container {
+    margin-left: 7%;
+    margin-right: 7%;
+    margin-bottom: 3%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    height: auto;
+}
+
+.container{
+    /* font-family: 'Lato', sans-serif; */
+    color: #2C3E50;
+    border-radius: 20px;
+    width: 500px;
+    padding: 2%;
+    background-color: white;
+
+}
+
+@media screen and (max-width: 1761px) {
+    .main-container {
+        flex-basis: 450px;
+    }
+    
+    .container {
+        flex-grow:  1;
+        margin-top: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+
+.info-title {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.info-container {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin-bottom: 3em;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-grow: 1;
+    flex-basis: 150px;
+}
+
+.icon {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    margin-top: 0px;
+    margin-bottom: 15px;
+    background-size: contain;
+}
+
+
+
+.info h5 {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    text-transform: capitalize;
+    text-align: center;
+    font-size: 16px;
+}
+
+@media screen and (max-width: 455px) {
+
+    .container {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .info-container {
+        margin: 0;
+        /* flex-wrap: wrap; */
+    }
+
+    .info {
+        margin-bottom: 1.9rem;
+    }
+
+    .icon {
+        width: 90px;
+        height: 90px;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;
+        margin-bottom: 0;
+    }
+
+    .info h5 {
+        font-size: 0.8rem;
+    }
+}
+
+@media screen and (max-width: 330px) {
+    .info-container {
+        flex-wrap: wrap;
+    }
+}
+
+/* Icons for circles */
+.p-icon1 { background-image: url('../assets/vectors/wash-hands.svg');}
+.p-icon2 { background-image: url('../assets/vectors/soap.svg');}
+.p-icon3 { background-image: url('../assets/vectors/wear-mask-01.svg');}
+.p-icon4 { background-image: url('../assets/vectors/disinfect.svg');}
+.p-icon5 { background-image: url('../assets/vectors/avoid-shakehands.svg');}
+.p-icon6 { background-image: url('../assets/vectors/avoid-crowd.svg');}
+
+.s-icon1 { background-image: url('../assets/vectors/fever.svg');}
+.s-icon2 { background-image: url('../assets/vectors/sore-throat.svg');}
+.s-icon3 { background-image: url('../assets/vectors/runny-nose.svg');}
+.s-icon4 { background-image: url('../assets/vectors/fatigue.svg');}
+.s-icon5 { background-image: url('../assets/vectors/breathing.svg');}
+.s-icon6 { background-image: url('../assets/vectors/cough.svg');}
+
+
+.m-icon1 { background-image: url('../assets/vectors/mask-1.svg');}
+.m-icon2 { background-image: url('../assets/vectors/mask-2.svg');}
+.m-icon3 { background-image: url('../assets/vectors/mask-3.svg');}
+.m-icon4 { background-image: url('../assets/vectors/mask-4.svg');}
+.m-icon5 { background-image: url('../assets/vectors/mask-5.svg');}
+.m-icon6 { background-image: url('../assets/vectors/mask-6.svg');}
+
+/* .m-icon {
+    width: 100px;
+    height: 100px;
+} */

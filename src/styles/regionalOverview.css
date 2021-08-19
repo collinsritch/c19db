@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700;900&display=swap');
+
+.heading{
+    margin-right: 7%;
+    margin-left: 7%;
+    margin-bottom: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.regional-overview-container {
+    margin-left: 7%;
+    margin-right: 7%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+.region-container {
+    display: flex;
+    flex-direction: column;
+    flex-basis: 300px;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 2%;
+    margin-bottom: 20px;
+}   
+
+.region-container h2{
+    margin-top: 1.1rem;
+    font-family: 'Roboto';
+    font-weight: 300;
+    font-size: 1.3rem;
+}
+
+@media screen and (max-width: 1087px) {
+    .regional-overview-container {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .region-container {
+        flex-grow: 1;
+        flex-basis: 300px;
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+}
+
+.see-more-regional {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: calc(7% + 10px);
+    margin-left: calc(7% + 10px);
+    font-family: 'Roboto';
+    font-weight: bold;
+    color: #2294B1;
+}
+
+.see-more-regional a {
+    text-decoration: none;
+    color: #2294B1;
+}
+
+

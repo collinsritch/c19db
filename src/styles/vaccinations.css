@@ -1,0 +1,69 @@
+body {
+    background-color: rgb(189,195,199,0.26);
+}
+
+h1{
+    font-size: 2.5rem;
+    font-family: Archivo, sans-serif;
+}
+
+h2 {
+    font-family: Archivo, sans-serif;
+}
+
+.content {
+    width: 100%;
+    margin-top: 10vh;
+    padding-bottom: 1%;
+}
+
+/* Heading Styles */
+
+.heading-chart-container {
+    margin: 0 7%;
+    display: flex;
+    flex-direction: column;
+}
+
+.heading-container {
+    margin-top: 2%;
+}
+
+.chart-container {
+    display: flex;
+    background-color: white;
+    width: 100%;
+    border-radius: 20px;
+    height: 50vh;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.heading-title {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.herd-immunity-container {
+    padding: 2%;
+    width: 90%;
+    height: 25vh;
+    background-color: white;
+    border-radius: 20px;
+    margin-bottom: 7%;
+
+}
+
+.text-info-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1%
+}
+
+
+
+
+
+

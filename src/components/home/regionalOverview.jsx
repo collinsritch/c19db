@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react'
 import '../../styles/regionalOverview.css'
 import RegionalPieChart from './regionalPieChart'
@@ -49,7 +50,6 @@ const RegionalOverview = (props) => {
     const [regions, setRegions] = useState([])
     const [chartData, setChartData] = useState([])  
 
-
     useEffect(() => {   
         async function getRegionalData() {
             try {
@@ -70,6 +70,7 @@ const RegionalOverview = (props) => {
 
     console.log(chartData)
     
+
 
     return(
         <>
@@ -106,5 +107,6 @@ const RegionalOverview = (props) => {
         </>
     )
 }
+
 
 export default RegionalOverview

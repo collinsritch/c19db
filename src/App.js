@@ -17,6 +17,7 @@ import Regional from './components/regional/regional'
 import NewsPage from './components/news/news';
 import Footer from './components/footer'
 import InfoPage from './components/informationPage/infoPage'
+import News from './components/news/news'
 
 function App() {
   return (

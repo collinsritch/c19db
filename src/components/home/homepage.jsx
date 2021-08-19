@@ -32,6 +32,13 @@ function Home() {
                     {/* <CasesChartData/> */}
                 </div>
 
+                <div className="vax-page-link">
+                    <a id="vax-link-a" href="/vaccinations">
+                        <h3>News</h3>
+                        <KeyboardArrowRightIcon />
+                    </a>
+                </div>
+
                 <h2 id="vax-header" style={{ marginLeft: "7.8%", marginBottom: "1rem", marginTop: "2rem" }}>Vaccination Data Overview</h2>
                 <div className="chart-div" id="vax-chart-div">
                     <VaxChart />

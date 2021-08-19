@@ -16,6 +16,7 @@ import Vaccinations from './components/vaccinations/vaccinations';
 import Regional from './components/regional/regional'
 import Footer from './components/footer'
 import InfoPage from './components/informationPage/infoPage'
+import News from './components/news/news'
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
               <Route exact path="/vaccinations" component={Vaccinations}/>
               <Route exact path="/regional" component={Regional}/>
               <Route exact path="/info" component={InfoPage}/>
+              <Route exact path="/news" component={News}/>
             </Switch>
         
         </BrowserRouter>

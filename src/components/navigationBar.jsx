@@ -12,7 +12,7 @@ function NavigationBar() {
 
             <div className = "link-div">
                 <a id="home-link" href = "/"> Home </a>
-                <a id = "about-link" href = "/info"> Information </a>
+                <a id = "home-link" href = "/info"> Information </a>
             </div>
         </div>
     );

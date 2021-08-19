@@ -10,6 +10,9 @@ const REGIONAL_PATH = '../../src/assets/' + REGIONAL_FILE;
 const PROVINCIAL_FILE = 'ProvincialData2020-Present.csv';
 const PROVINCIAL_PATH = '../../src/assets/' + PROVINCIAL_FILE;
 
+const REGIONAL_TOTALS_FILE = 'RegionalTotals.csv';
+const REGIONAL_TOTALS_PATH = '../../src/assets/' + REGIONAL_TOTALS_FILE;
+
 const provinceList = getProvinceList();  //get the list of provinces per region
 
 // @desc    This will load the data from regional and provincial CSV files in src/assets folder
@@ -26,9 +29,11 @@ const getData = async (req, res) => {
     try {
         const regionalData = await loadRegionalData();
         const provincialData = await loadProvincialData();
+        const regionalTotals = await loadRegionalTotalsByStatus();
 
         let daily = _.sortBy(regionalData, 'Date');
-        let totals = getTotalPerRegion(daily);
+        // let totals = getTotalPerRegion(daily);
+        let totals = getRegionalTotalsByStatus(regionalTotals);
         let topRegionTotals = _.first(totals, 4);
         let provinceTotals = getProvinceTotalsPerRegion(topRegionTotals, provincialData);
 
@@ -37,7 +42,7 @@ const getData = async (req, res) => {
 
         res.status(200).json({
             ...response,
-            data: { totals, daily, provinceTotals }
+            data: { totals, provinceTotals, daily }
         });
     } catch (err) {
         console.log(err.message);
@@ -46,7 +51,7 @@ const getData = async (req, res) => {
     }
 
     let t1 = performance.now();
-    // console.log('GET /regional took ' + (t1 - t0) + ' milliseconds.');
+    console.log('GET /regional took ' + (t1 - t0) + ' milliseconds.');
 };
 
 /* 
@@ -76,7 +81,7 @@ function loadRegionalData() {
 */
 function loadProvincialData() {
     return new Promise((resolve, reject) => {
-        // console.log(path.join(__dirname, PROVINCIAL_PATH));
+        console.log(path.join(__dirname, PROVINCIAL_PATH));
         papa.parse(fs.createReadStream(path.join(__dirname, PROVINCIAL_PATH)), {
             delimiter: ',',
             header: true,
@@ -89,6 +94,39 @@ function loadProvincialData() {
             }
         });
     });
+}
+
+/* 
+    loads regional cases (recoveries, deaths, total)
+*/
+function loadRegionalTotalsByStatus() {
+    return new Promise((resolve, reject) => {
+        console.log(path.join(__dirname, REGIONAL_TOTALS_PATH));
+        papa.parse(fs.createReadStream(path.join(__dirname, REGIONAL_TOTALS_PATH)), {
+            delimiter: ',',
+            header: true,
+            dynamicTyping: true,
+            complete: function (results) {
+                resolve(results.data);
+            },
+            error: function (error) {
+                reject(error);
+            }
+        });
+    });
+}
+
+/*
+    returns regional totals (recoveries, deaths, total, active cases)
+    per region
+*/
+function getRegionalTotalsByStatus(results) {
+    results.forEach((data) => {
+        let activeCases = data.Total - (data.Recoveries + data.Deaths);
+        data['Active Cases'] = activeCases;
+    })
+    totals = _.sortBy(results, 'Total');
+    return totals.reverse();
 }
 
 /*
@@ -123,12 +161,12 @@ function getTotalPerRegion(dailyData) {
 */
 function getProvinceTotalsPerRegion(regionTotals, provincialData) {
     let results = {};
-    regionTotals.forEach(({ region, cases }) => {
-        results[region] = { total: cases };
-        let provinces = getProvinces(region);
+    regionTotals.forEach(({ Region, Total }) => {
+        results[Region] = { total: Total };
+        let provinces = getProvinces(Region);
         provinces.forEach((province) => {
             let cases = getProvinceTotal(province, provincialData);
-            results[region][province] = cases;
+            results[Region][province] = cases;
         });
     });
     return results;

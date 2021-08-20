@@ -7,7 +7,7 @@ function NavigationBar() {
 
             <div className = "logo-and-title">
                 <div className = "dummy-logo"></div>
-                COVID-19 Health Data Dashboard
+                Deployed on Heroku
             </div>
 
             <div className = "link-div">

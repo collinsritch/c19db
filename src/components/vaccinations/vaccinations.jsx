@@ -15,8 +15,10 @@ import {
 import '../../styles/vaccinations.css'
 
 const Vaccinations = () => {
-    
     const [vaxData,setVaxData] = useState({});
+
+    const numFormatter = new Intl.NumberFormat('en-US')
+
     useEffect(() => {
         try{
             async function getData() {
@@ -98,8 +100,8 @@ const Vaccinations = () => {
                             
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date"  tick = {{fontSize: 11}}/>
-                            <YAxis type="number" interval = "preserveStartEnd"/>
-                            <Tooltip/>
+                            <YAxis type="number" interval = "preserveStartEnd" tickFormatter={tick => numFormatter.format(tick)} />
+                            <Tooltip formatter={value => numFormatter.format(value)} />
                             <Area type="monotone" dataKey="At Least One Dose" stroke="rgba(255,195,113,1)" fillOpacity={1} fill="url(#colorTotal)" />
                             <Area type="monotone" dataKey="People Fully Vaccinated" stroke="rgba(255,95,109,1)" fillOpacity={1} fill="url(#atLeastOne)" />
                             <Legend />
@@ -133,8 +135,8 @@ const Vaccinations = () => {
                             
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date"  tick = {{fontSize: 11}}/>
-                            <YAxis type="number" interval = "preserveStartEnd"/>
-                            <Tooltip/>
+                            <YAxis type="number" interval = "preserveStartEnd" tickFormatter={tick => numFormatter.format(tick)} />
+                            <Tooltip formatter={value => numFormatter.format(value)} />
                             <Area type="monotone" dataKey="Daily Vaccination" stroke="rgba(97,183,142,1)" fillOpacity={1} fill="url(#dailyVaxColor)" />
                             <Legend />
                 

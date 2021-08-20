@@ -33,7 +33,7 @@ function Home() {
                 </div>
 
                 <div className="vax-page-link">
-                    <a id="vax-link-a" href="/vaccinations">
+                    <a id="vax-link-a" href="/news">
                         <h3>News</h3>
                         <KeyboardArrowRightIcon />
                     </a>

@@ -12,7 +12,7 @@ const app = express();
 dotenv.config();
 
 app.use(function(req,res,next){
-    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Origin", "https://ph-c19db.herokuapp.com/");
     res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
     res.header(
         "Access-Control-Allow-Headers", 
@@ -25,7 +25,7 @@ app.use(
     cors({
         allowedHeaders: ["sessionId", "Content-Type"],
         exposedHeaders: ["sessionId"],
-        origin:"http://localhost:3000",
+        origin:"https://ph-c19db.herokuapp.com/",
         methods:[
             "OPTIONS",
             "POST",

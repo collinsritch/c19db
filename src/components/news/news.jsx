@@ -51,7 +51,7 @@ const NewsPage = (props) => {
 
     // This is where the GET request happens
     const getNews = async (date) => {
-        const response = await axios.get(`http://localhost:5000/news/${date}`)
+        const response = await axios.get(`https://ph-c19db.herokuapp.com/news/${date}`)
         console.log(response.data.data)
         setNewsList(response.data.data)
     }

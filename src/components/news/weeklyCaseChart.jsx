@@ -22,7 +22,7 @@ const WeeklyCaseChart = (props) => {
             let chartData;
     
             async function getData() {
-                const response = await axios.get('http://localhost:5000/home')
+                const response = await axios.get('https://ph-c19db.herokuapp.com/home')
                 chartData = response.data.data
 
                 setData(chartData.counts)

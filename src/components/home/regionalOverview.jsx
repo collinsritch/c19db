@@ -53,7 +53,7 @@ const RegionalOverview = (props) => {
     useEffect(() => {   
         async function getRegionalData() {
             try {
-                const response = await axios.get('http://localhost:5000/regional')
+                const response = await axios.get('https://ph-c19db.herokuapp.com/regional')
                 setProvinceTotals(response.data.data.provinceTotals)
                 setRegions(Object.keys(response.data.data.provinceTotals))
             } catch(err) {

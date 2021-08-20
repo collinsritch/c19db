@@ -26,7 +26,7 @@ const VaxChart = () => {
     useEffect(() => {
         try{
             async function getData() {
-                const response = await axios.get('http://localhost:5000/vaccinations')
+                const response = await axios.get('https://ph-c19db.herokuapp.com/vaccinations')
                 // console.log(response.data.data)
 
                 setVaxData(response.data.data)

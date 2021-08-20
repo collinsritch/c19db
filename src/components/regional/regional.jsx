@@ -15,7 +15,7 @@ const Regional = (props) => {
         console.log("In regional page")
         try {
             const getData = async() => {
-                const response = await axios.get('http://localhost:5000/regional')
+                const response = await axios.get('https://ph-c19db.herokuapp.com/regional')
                 setTotals(response.data.data.totals)
                 setDaily(response.data.data.daily)
             }

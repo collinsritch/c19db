@@ -11,7 +11,31 @@ const publicPath = path.join(__dirname, '..', 'public');
 const app = express();
 dotenv.config();
 
-app.use(cors());
+app.use(function(req,res,next){
+    res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+    res.header("Access-Control-Allow-Methods", "GET, POST, OPTIONS, PUT, DELETE");
+    res.header(
+        "Access-Control-Allow-Headers", 
+        "Content-Type, Access-Control-Allow-Headers, X-Requested-Wtih"
+    );
+    next();
+});
+
+app.use(
+    cors({
+        allowedHeaders: ["sessionId", "Content-Type"],
+        exposedHeaders: ["sessionId"],
+        origin:"http://localhost:3000",
+        methods:[
+            "OPTIONS",
+            "POST",
+            "GET",
+            "PUT",
+            "DELETE"
+        ],
+        credentials:true
+    })
+);
 //Mount routers
 
 app.use('/home', homeRouter);

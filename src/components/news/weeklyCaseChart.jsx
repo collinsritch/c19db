@@ -13,7 +13,6 @@ import {
 import dateFormat from 'dateformat' 
 
 const WeeklyCaseChart = (props) => {
-    const numFormatter = new Intl.NumberFormat('en-US')
 
     const [data, setData] = useState({});
 
@@ -42,27 +41,25 @@ const WeeklyCaseChart = (props) => {
                 "New Cases": data.weekly[a].newCase,
                 "Recoveries": data.weekly[a].recovery,
                 "Deaths": data.weekly[a].death,
-                "Cumulative": data.weekly[a].cumulative,
                 }
-                )       
+            );
         }
     }
 
     reformatWeekly();
 
-    const WeeklyTooltip = ({ active, payload, label }) => {
+    const WeeklyTooltip = ({ active, payload, label }: any) => {
         if (active && payload && payload.length) {
             // console.log(payload)
             return (
             <div className="daily-graph-tooltip">
                 <p className="tooltip-date">{`${label}`}</p>
-                <p className="tooltip-data"><b>Cases: </b>{`${numFormatter.format(payload[0].value)}`}</p>
-                <p className="tooltip-data"><b>Recoveries:</b> {`${numFormatter.format(payload[0].payload["Recoveries"])}`}</p>
-                <p className="tooltip-data"><b>Deaths:</b> {`${numFormatter.format(payload[0].payload["Deaths"])}`}</p>
-                <p className="tooltip-data"><b>Cumulative Cases:</b> <br/>{`${numFormatter.format(payload[0].payload["Cumulative"])}`}</p>
+                <p className="tooltip-data"><b>Cumulative Cases: </b>{`${payload[0].value}`}</p>
+                <p className="tooltip-data"><b>Recoveries:</b> {`${payload[0].payload["Recoveries"]}`}</p>
+                <p className="tooltip-data"><b>Deaths:</b> {`${payload[0].payload["Deaths"]}`}</p>
             </div>
             );
-        }
+    }
         return null;
     };
 
@@ -70,14 +67,14 @@ const WeeklyCaseChart = (props) => {
         <div className = "main-chart">
         <ResponsiveContainer width="100%" height="100%">
             <LineChart
-            // width={100%}
-            // height={100%}
+            width={1150}
+            height={340}
             data={weeklyArr}
             margin={{
-                top: 20,
-                right: 20,
-                left: 20,
-                bottom: 20,
+                top: 0,
+                right: 0,
+                left: 0,
+                bottom: 0,
             }}
             >
                 

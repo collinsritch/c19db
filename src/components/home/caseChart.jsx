@@ -112,7 +112,7 @@ export default function CasesChart() {
 
     return (
             <div className = "main-chart">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer  width="100%" height="100%">
                     <LineChart
                     width={1150}
                     height={340}

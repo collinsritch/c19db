@@ -13,6 +13,9 @@ import axios from 'axios'
 import dateFormat from 'dateformat'
 
 export default function CasesChart() {
+
+    const numFormatter = new Intl.NumberFormat('en-US')
+
     const [data, setData] = useState({});
 
     // load Data from server
@@ -60,50 +63,19 @@ export default function CasesChart() {
     reformatDaily();
     // console.log(dailyArr);
 
-    var weeklyArr=[]
-    function reformatWeekly() {
-        let a;
-        for(a in data.weekly){
-            weeklyArr.push(
-                {"date":dateFormat(a,"mediumDate"), 
-                "New Cases": data.weekly[a].newCase,
-                "Recoveries": data.weekly[a].recovery,
-                "Deaths": data.weekly[a].death,
-                }
+    const CustomTooltip = ({ active, payload, label }) => {
+        if (active && payload && payload.length) {
+            // console.log(payload)
+            return (
+            <div className="daily-graph-tooltip">
+                <p className="tooltip-date">{`${label}`}</p>
+                <p className="tooltip-data"><b>Cases: </b>{`${numFormatter.format(payload[0].value)}`}</p>
+                <p className="tooltip-data"><b>Recoveries:</b> {`${numFormatter.format(payload[0].payload["Recoveries"])}`}</p>
+                <p className="tooltip-data"><b>Deaths:</b> {`${numFormatter.format(payload[0].payload["Deaths"])}`}</p>
+                <p className="tooltip-data"><b>Cumulative Cases:</b> <br/>{`${numFormatter.format(payload[0].payload["Cumulative"])}`}</p>
+            </div>
             );
         }
-    }
-
-    reformatWeekly();
-
-    const CustomTooltip = ({ active, payload, label }: any) => {
-        if (active && payload && payload.length) {
-            // console.log(payload)
-            return (
-            <div className="daily-graph-tooltip">
-                <p className="tooltip-date">{`${label}`}</p>
-                <p className="tooltip-data"><b>Cases: </b>{`${payload[0].value}`}</p>
-                <p className="tooltip-data"><b>Recoveries:</b> {`${payload[0].payload["Recoveries"]}`}</p>
-                <p className="tooltip-data"><b>Deaths:</b> {`${payload[0].payload["Deaths"]}`}</p>
-                <p className="tooltip-data"><b>Cumulative Cases:</b> <br/>{`${payload[0].payload["Cumulative"]}`}</p>
-            </div>
-            );
-    }
-        return null;
-    };
-
-    const WeeklyTooltip = ({ active, payload, label }: any) => {
-        if (active && payload && payload.length) {
-            // console.log(payload)
-            return (
-            <div className="daily-graph-tooltip">
-                <p className="tooltip-date">{`${label}`}</p>
-                <p className="tooltip-data"><b>Cumulative Cases: </b>{`${payload[0].value}`}</p>
-                <p className="tooltip-data"><b>Recoveries:</b> {`${payload[0].payload["Recoveries"]}`}</p>
-                <p className="tooltip-data"><b>Deaths:</b> {`${payload[0].payload["Deaths"]}`}</p>
-            </div>
-            );
-    }
         return null;
     };
 
@@ -124,7 +96,7 @@ export default function CasesChart() {
                         
                         <CartesianGrid strokeDasharray="3 3" />
                         <XAxis dataKey="date"  tick = {{fontSize: 11}}/>
-                        <YAxis dataKey="New Cases" />
+                        <YAxis dataKey="New Cases" tickFormatter={tick => numFormatter.format(tick)} />
                         <Tooltip content={<CustomTooltip/>}/>
                         <Line type="monotone" dataKey="New Cases" stroke="rgba(33,147,176,1)" dot = {{r:1}} activeDot={{ r: 4 }} />
                         <Legend />

@@ -16,6 +16,8 @@ import '../../styles/vaccinations.css'
 
 const Vaccinations = () => {
     
+    const numFormatter = new Intl.NumberFormat('en-US')
+
     const [vaxData,setVaxData] = useState({});
     useEffect(() => {
         try{
@@ -67,7 +69,7 @@ const Vaccinations = () => {
             <section className="heading-chart-container">
                 <div className="heading-container">
                     <h1>Philippines Vaccination Data</h1>
-                    <h2>General overview as of <b>August 5, 2021</b></h2>
+                    <h2>General overview as of <b>August 18, 2021</b></h2>
                     <br/>
                 </div>
 
@@ -98,8 +100,8 @@ const Vaccinations = () => {
                             
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date"  tick = {{fontSize: 11}}/>
-                            <YAxis type="number" interval = "preserveStartEnd"/>
-                            <Tooltip/>
+                            <YAxis type="number" interval = "preserveStartEnd" tickFormatter={tick => numFormatter.format(tick)} />
+                            <Tooltip formatter={value => numFormatter.format(value)} />
                             <Area type="monotone" dataKey="At Least One Dose" stroke="rgba(255,195,113,1)" fillOpacity={1} fill="url(#colorTotal)" />
                             <Area type="monotone" dataKey="People Fully Vaccinated" stroke="rgba(255,95,109,1)" fillOpacity={1} fill="url(#atLeastOne)" />
                             <Legend />
@@ -133,8 +135,8 @@ const Vaccinations = () => {
                             
                             <CartesianGrid strokeDasharray="3 3" />
                             <XAxis dataKey="date"  tick = {{fontSize: 11}}/>
-                            <YAxis type="number" interval = "preserveStartEnd"/>
-                            <Tooltip/>
+                            <YAxis type="number" interval = "preserveStartEnd" tickFormatter={tick => numFormatter.format(tick)} />
+                            <Tooltip formatter={value => numFormatter.format(value)} />
                             <Area type="monotone" dataKey="Daily Vaccination" stroke="rgba(97,183,142,1)" fillOpacity={1} fill="url(#dailyVaxColor)" />
                             <Legend />
                 

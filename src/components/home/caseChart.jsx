@@ -12,28 +12,28 @@ import {
 import axios from 'axios'
 import dateFormat from 'dateformat'
 
-export default function CasesChart() {
-    const [data, setData] = useState({});
+export default function CasesChart({data}) {
+    // const [data, setData] = useState({});
 
     const numFormatter = new Intl.NumberFormat('en-US')
 
     // load Data from server
-    useEffect(() => {
-        try{
-            let chartData;
+    // useEffect(() => {
+    //     try{
+    //         let chartData;
     
-            async function getData() {
-                const response = await axios.get('http://localhost:5000/home')
-                chartData = response.data.data
+    //         async function getData() {
+    //             const response = await axios.get('http://localhost:5000/home')
+    //             chartData = response.data.data
 
-                setData(chartData.counts)
-            }
-            getData()
-        }catch (e){
-            console.error(e)
-        }
-    }, []);
-    console.log(data)
+    //             setData(chartData.counts)
+    //         }
+    //         getData()
+    //     }catch (e){
+    //         console.error(e)
+    //     }
+    // }, []);
+    // console.log(data)
 
     // make function that follows rechart's data format
     // const daily = [
@@ -42,18 +42,21 @@ export default function CasesChart() {
     //         "newcases": cases,
     //     }
     // ]
+
     
+    // console.log(data)
+
     var dailyArr=[]
     function reformatDaily() {
         let a;
-        for(a in data.daily){
+        for(a in data.counts.daily){
             dailyArr.push(
                 {"date":dateFormat(a,"mediumDate"), 
-                "New Cases": data.daily[a].newCase,
-                "Recoveries": data.daily[a].recovery,
-                "Deaths": data.daily[a].death,
+                "New Cases": data.counts.daily[a].newCase,
+                "Recoveries": data.counts.daily[a].recovery,
+                "Deaths": data.counts.daily[a].death,
                 // "Cumulative Deaths up to this Day": data.daily[a].cumulative,
-                "Cumulative": data.daily[a].cumulative,
+                "Cumulative": data.counts.daily[a].cumulative,
                 }
             )       
         }
@@ -62,39 +65,7 @@ export default function CasesChart() {
     reformatDaily();
     // console.log(dailyArr);
 
-    var weeklyArr=[]
-    function reformatWeekly() {
-        let a;
-        for(a in data.weekly){
-            weeklyArr.push(
-                {"date":dateFormat(a,"mediumDate"), 
-                "New Cases": data.weekly[a].newCase,
-                "Recoveries": data.weekly[a].recovery,
-                "Deaths": data.weekly[a].death,
-                }
-            );
-        }
-    }
-
-    reformatWeekly();
-
     const CustomTooltip = ({ active, payload, label }) => {
-        if (active && payload && payload.length) {
-            // console.log(payload)
-            return (
-            <div className="daily-graph-tooltip">
-                <p className="tooltip-date">{`${label}`}</p>
-                <p className="tooltip-data"><b>Cases: </b>{`${numFormatter.format(payload[0].value)}`}</p>
-                <p className="tooltip-data"><b>Recoveries:</b> {`${numFormatter.format(payload[0].payload["Recoveries"])}`}</p>
-                <p className="tooltip-data"><b>Deaths:</b> {`${numFormatter.format(payload[0].payload["Deaths"])}`}</p>
-                <p className="tooltip-data"><b>Cumulative Cases:</b> <br/>{`${numFormatter.format(payload[0].payload["Cumulative"])}`}</p>
-            </div>
-            );
-        }
-        return null;
-    };
-
-    const WeeklyTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
             // console.log(payload)
             return (

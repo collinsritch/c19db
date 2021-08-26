@@ -49,7 +49,7 @@ const Regional = (props) => {
     
     const CustomTooltip = ({ active, payload, label }) => {
         if (active && payload && payload.length) {
-            console.log(payload)
+            // console.log(payload)
             return (
                 <div className="daily-graph-tooltip">
                     <p style={{textAlign:'center'}}><b>{label}</b></p>

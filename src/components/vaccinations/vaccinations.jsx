@@ -15,6 +15,12 @@ import {
 import '../../styles/vaccinations.css'
 
 const Vaccinations = () => {
+<<<<<<< HEAD
+=======
+    
+    const numFormatter = new Intl.NumberFormat('en-US')
+
+>>>>>>> 872bf10ed5245c6a4cec732cbe5dcb119eb5016b
     const [vaxData,setVaxData] = useState({});
 
     const numFormatter = new Intl.NumberFormat('en-US')
@@ -69,7 +75,7 @@ const Vaccinations = () => {
             <section className="heading-chart-container">
                 <div className="heading-container">
                     <h1>Philippines Vaccination Data</h1>
-                    <h2>General overview as of <b>August 5, 2021</b></h2>
+                    <h2>General overview as of <b>August 18, 2021</b></h2>
                     <br/>
                 </div>
 

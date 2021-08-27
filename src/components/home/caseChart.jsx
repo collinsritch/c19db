@@ -12,18 +12,10 @@ import {
 import axios from 'axios'
 import dateFormat from 'dateformat'
 
-<<<<<<< HEAD
 export default function CasesChart({data}) {
     // const [data, setData] = useState({});
 
     const numFormatter = new Intl.NumberFormat('en-US')
-=======
-export default function CasesChart() {
-
-    const numFormatter = new Intl.NumberFormat('en-US')
-
-    const [data, setData] = useState({});
->>>>>>> 872bf10ed5245c6a4cec732cbe5dcb119eb5016b
 
     // load Data from server
     // useEffect(() => {

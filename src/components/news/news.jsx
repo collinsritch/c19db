@@ -53,7 +53,7 @@ const NewsPage = (props) => {
     const getNews = async (date) => {
         const response = await axios.get(`http://localhost:5000/news/${date}`)
         console.log(response.data.data)
-        setNewsList(response.data.data)
+        setNewsList(response.data.data) 
     }
 
     return (

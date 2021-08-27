@@ -15,12 +15,6 @@ import {
 import '../../styles/vaccinations.css'
 
 const Vaccinations = () => {
-<<<<<<< HEAD
-=======
-    
-    const numFormatter = new Intl.NumberFormat('en-US')
-
->>>>>>> 872bf10ed5245c6a4cec732cbe5dcb119eb5016b
     const [vaxData,setVaxData] = useState({});
 
     const numFormatter = new Intl.NumberFormat('en-US')

@@ -37,11 +37,7 @@ function Home() {
 
                 <div className="vax-page-link">
                     <a id="vax-link-a" href="/news">
-<<<<<<< HEAD
-                        <h3>News</h3>
-=======
                         <h3>Timeline And Events</h3>
->>>>>>> 872bf10ed5245c6a4cec732cbe5dcb119eb5016b
                         <KeyboardArrowRightIcon />
                     </a>
                 </div>

@@ -14,28 +14,29 @@ import {
   ResponsiveContainer
 } from "recharts";
 import dateFormat from 'dateformat'
+import vaccinationData from './../vaccinations/vaccinationData'
 
 
 
 
 const VaxChart = () => {
-    const [vaxData,setVaxData] = useState({});
 
     const numFormatter = new Intl.NumberFormat('en-US')
 
-    useEffect(() => {
-        try{
-            async function getData() {
-                const response = await axios.get('http://localhost:5000/vaccinations')
-                // console.log(response.data.data)
+    // const [vaxData,setVaxData] = useState({});
+    // useEffect(() => {
+    //     try{
+    //         async function getData() {
+    //             const response = await axios.get('http://localhost:5000/vaccinations')
+    //             setVaxData(response.data.data)
+    //         }
+    //         getData()
+    //     }catch (e){
+    //         console.log('Error on fetching data from vaccinations route', e)
+    //     }
+    // }, []);
 
-                setVaxData(response.data.data)
-            }
-            getData()
-        }catch (e){
-            console.log('Error on fetching data from vaccinations route', e)
-        }
-    }, []);
+    const vaxData = vaccinationData
     console.log(vaxData);
 
     /**

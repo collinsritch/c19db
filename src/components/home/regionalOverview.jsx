@@ -6,6 +6,7 @@ import axios from 'axios'
 import { useEffect } from 'react'
 import Loader from './loader'
 import { PieChart, Pie, Tooltip, ResponsiveContainer } from 'recharts';
+import regionalCaseData from '../regional/regionalCaseData'
 
 const RegionNames = {
     BARMM: "BARMM",
@@ -45,23 +46,27 @@ function formatData(data) {
 }
 
 const RegionalOverview = (props) => {
-    const [provinceTotals, setProvinceTotals] = useState([])
-    const [regions, setRegions] = useState([])
-    const [chartData, setChartData] = useState([])  
+    // const [provinceTotals, setProvinceTotals] = useState([])
+    // const [regions, setRegions] = useState([])
+    // const [chartData, setChartData] = useState([])  
 
-    useEffect(() => {   
-        async function getRegionalData() {
-            try {
-                const response = await axios.get('http://localhost:5000/regional')
-                setProvinceTotals(response.data.data.provinceTotals)
-                setRegions(Object.keys(response.data.data.provinceTotals))
-            } catch(err) {
-                console.log(err)
-            }
-        }
-        getRegionalData()
+    // useEffect(() => {   
+    //     async function getRegionalData() {
+    //         try {
+    //             const response = await axios.get('http://localhost:5000/regional')
+    //             setProvinceTotals(response.data.data.provinceTotals)
+    //             setRegions(Object.keys(response.data.data.provinceTotals))
+    //         } catch(err) {
+    //             console.log(err)
+    //         }
+    //     }
+    //     getRegionalData()
         
-    }, [])
+    // }, [])
+
+    const provinceTotals = regionalCaseData.provinceTotals
+    const regions = Object.keys(regionalCaseData.provinceTotals)
+    const chartData = []
     
     regions.forEach((r) => {
         chartData.push(formatData(provinceTotals[r]))

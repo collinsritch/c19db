@@ -1,28 +1,28 @@
 import React, { useEffect,useState } from 'react';
 import axios from 'axios'
 
-function CaseDataBox(obj){   
-    const [counts, setCounts] = useState({});
+function CaseDataBox({data}){   
+    // const [counts, setCounts] = useState({});
     
 
-    useEffect(() => {
-        try{
-            let homeData;
+    // useEffect(() => {
+    //     try{
+    //         let homeData;
 
-            async function getData () {
-                const response = await axios.get('http://localhost:5000/home')
-                homeData = response.data.data
+    //         async function getData () {
+    //             const response = await axios.get('http://localhost:5000/home')
+    //             homeData = response.data.data
 
-                console.log(homeData)   
-                setCounts(homeData.counts)
-            }
+    //             console.log(homeData)   
+    //             setCounts(homeData.counts)
+    //         }
 
-            getData()
+    //         getData()
 
-        }catch(e){
-            console.error(e)
-        }
-    },[])
+    //     }catch(e){
+    //         console.error(e)
+    //     }
+    // },[])
 
     // const getData = async () => {
     //     const response = await axios.get('http://localhost:5000/home')
@@ -50,8 +50,8 @@ function CaseDataBox(obj){
         background: "linear-gradient(225deg, rgba(29,38,113,1) 27%, rgba(195,55,100,1) 100%)"
     }
 
-    const intlNumberFormat = new Intl.NumberFormat('en-US')
-    // console.log(internationalNumberFormat.format(givenNumber))
+    const numFormatter = new Intl.NumberFormat('en-US')
+    // console.log(numFormatter.format(givenNumber))
 
     
     
@@ -61,31 +61,31 @@ function CaseDataBox(obj){
     return(
         <>
             <div className = "data-container-ov">
-                <h1 className="data-val">{intlNumberFormat.format(counts.newCaseCount)} </h1> 
+                <h1 className="data-val">{numFormatter.format(data.counts.newCaseCount)} </h1> 
                 {/* <h1 className="data-val">0</h1>  */}
                 <h2 className="data-label">New Cases</h2>
             </div>
 
             <div className = "data-container-ov" style = {type2style}>
-                <h1 className="data-val">{intlNumberFormat.format(counts.totalCaseCount)}</h1>
+                <h1 className="data-val">{numFormatter.format(data.counts.totalCaseCount)}</h1>
                 {/* <h1 className="data-val">0</h1> */}
                 <h2 className="data-label">Total Cases</h2>
             </div>
 
             <div className = "data-container-ov" style = {type3style}>
-                <h1 className="data-val">{intlNumberFormat.format(counts.recoveryCount)}</h1>
+                <h1 className="data-val">{numFormatter.format(data.counts.recoveryCount)}</h1>
                 {/* <h1 className="data-val">0</h1> */}
                 <h2 className="data-label">Total Recoveries</h2>
             </div>
 
             <div className = "data-container-ov" style={type4style}>
-                <h1 className="data-val">{intlNumberFormat.format(counts.activeCaseCount)}</h1>
+                <h1 className="data-val">{numFormatter.format(data.counts.activeCaseCount)}</h1>
                 {/* <h1 className="data-val">0</h1> */}
                 <h2 className="data-label">Total Active Cases</h2>
             </div>
 
             <div className = "data-container-ov" style={type5style}>
-                <h1 className="data-val">{intlNumberFormat.format(counts.deathCount)}</h1>
+                <h1 className="data-val">{numFormatter.format(data.counts.deathCount)}</h1>
                 {/* <h1 className="data-val">0</h1> */}
                 <h2 className="data-label">Deaths</h2>
             </div>

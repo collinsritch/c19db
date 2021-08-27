@@ -12,25 +12,25 @@ import {
 import { useState } from 'react'
 import NewsCard from './newsCard'
 import Pagination from './pagination'
+import newsList from './newsList'
 
 let PageSize = 5
 
 const NewsPage = (props) => {
     // News and date data variables
     const [dateInput, setDateInput] = useState(Date.now())
-    const [newsList, setNewsList] = useState([])
+    const [selectedNews, setSelectedNews] = useState([])
 
-    
     // Pagination-related variables
     const [currentPage, setCurrentPage] = useState(1)
     
     const currentNewsData = useMemo(() => {
         const firstPageIndex = (currentPage - 1) * PageSize
         const lastPageIndex = firstPageIndex + PageSize
-        return newsList.slice(firstPageIndex, lastPageIndex);
-    }, [currentPage, newsList])
+        return selectedNews.slice(firstPageIndex, lastPageIndex);
+    }, [currentPage, selectedNews])
 
-    // This will convert the output date from the date picker to 'YYYY-MM-DD'
+    // // This will convert the output date from the date picker to 'YYYY-MM-DD'
     function convertDateFormat(str) {
         var date = new Date(str),
           mnth = ("0" + (date.getMonth() + 1)).slice(-2),
@@ -38,22 +38,28 @@ const NewsPage = (props) => {
         return [date.getFullYear(), mnth, day].join("-");
     }
 
-    // Changes the state of the input date when user picks a date from the date picked
+    // // Changes the state of the input date when user picks a date from the date picked
     const handleDateChange = (date) => {
         setDateInput(date)
     }
 
-    // Call convertDateFormat and also gets the list of news from the server
+    // // Call convertDateFormat and also gets the list of news from the server
     const handleButtonClick = () => {
         const newDate = convertDateFormat(dateInput)
         getNews(newDate)
     }
 
-    // This is where the GET request happens
+    // // This is where the GET request happens
     const getNews = async (date) => {
-        const response = await axios.get(`http://localhost:5000/news/${date}`)
-        console.log(response.data.data)
-        setNewsList(response.data.data)
+        // const response = await axios.get(`http://localhost:5000/news/${date}`)
+        if(newsList[date] === undefined) {
+            setSelectedNews([])
+        }
+        else {
+            setSelectedNews(newsList[date])
+        }
+       
+        console.log(selectedNews)
     }
 
     return (
@@ -87,21 +93,21 @@ const NewsPage = (props) => {
 
                 <div className="articles-container">
 
-                    { newsList.length == 0 && 
+                    { (selectedNews.length == 0 || selectedNews == undefined) && 
                         <h2> No COVID-19 related news added in this date yet</h2>
                     }
 
                     
-                    { newsList.length > 0 && currentNewsData.map((article) => {
+                    { selectedNews.length > 0 && currentNewsData.map((article) => {
                         const {news_title, news_link, news_source} = article
-                        return <NewsCard id={news_title} title={news_title} link={news_link} source={news_source} />
+                        return <NewsCard key={news_title} title={news_title} link={news_link} source={news_source} />
                         })
                     }
                     
                     <Pagination
                         className="pagination-bar"
                         currentPage={currentPage}
-                        totalCount={newsList.length}
+                        totalCount={selectedNews.length}
                         pageSize={PageSize}
                         onPageChange={page => setCurrentPage(page)}
                     />

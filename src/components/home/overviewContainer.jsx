@@ -4,21 +4,21 @@ import CaseDataBox from './caseData.jsx'
 import CasesChart from "./caseChart";
 // import dateFormat from 'dateformat';
 
-function OverviewContainer() {
-    const [dt, setDt] = useState(new Date().toLocaleString());
+function OverviewContainer({data}) {
+    // const [dt, setDt] = useState(new Date().toLocaleString());
     
 
-    useEffect(() => {
-        // getData()
-        let secTimer = setInterval( () => {
-            setDt(new Date().toLocaleString())
-        },1000)
+    // useEffect(() => {
+    //     // getData()
+    //     let secTimer = setInterval( () => {
+    //         setDt(new Date().toLocaleString())
+    //     },1000)
 
-        return () => {
-            clearInterval(secTimer)
-        };
+    //     return () => {
+    //         clearInterval(secTimer)
+    //     };
    
-    }, []);
+    // }, []);
 
 
     //TO-DO: Change date format into dddd, mmmm, dS, yyyy
@@ -26,10 +26,10 @@ function OverviewContainer() {
         <div className = "overview-cont">
             <div className = "headings">
                 {/* <h1>COVID-19 Dashboard</h1> */}
-                <p>General Overview as of <b>{dt}</b></p>
+                <p>General Overview as of <b>Aug. 20, 2021</b></p>
             </div>
             <div className = "case-data-ov">
-                <CaseDataBox/>
+                <CaseDataBox data = {data}/>
             </div>
         </div>
     );

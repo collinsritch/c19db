@@ -15,10 +15,10 @@ import {
 import '../../styles/vaccinations.css'
 
 const Vaccinations = () => {
-    
+    const [vaxData,setVaxData] = useState({});
+
     const numFormatter = new Intl.NumberFormat('en-US')
 
-    const [vaxData,setVaxData] = useState({});
     useEffect(() => {
         try{
             async function getData() {

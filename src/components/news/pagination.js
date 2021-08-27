@@ -52,12 +52,12 @@ const Pagination = (props) => {
              
             // If the pageItem is a DOT, render the DOTS unicode character
             if (pageNumber === DOTS) {
-              return <li className="pagination-item dots">&#8230;</li>;
+              return <li key={pageNumber} className="pagination-item dots">&#8230;</li>;
             }
             
             // Render our Page Pills
             return (
-              <li
+              <li key = {pageNumber}
                 className={classNames('pagination-item', {
                   selected: pageNumber === currentPage
                 })}

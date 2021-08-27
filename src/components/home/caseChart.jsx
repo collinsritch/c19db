@@ -12,29 +12,28 @@ import {
 import axios from 'axios'
 import dateFormat from 'dateformat'
 
-export default function CasesChart() {
+export default function CasesChart({data}) {
+    // const [data, setData] = useState({});
 
     const numFormatter = new Intl.NumberFormat('en-US')
 
-    const [data, setData] = useState({});
-
     // load Data from server
-    useEffect(() => {
-        try{
-            let chartData;
+    // useEffect(() => {
+    //     try{
+    //         let chartData;
     
-            async function getData() {
-                const response = await axios.get('http://localhost:5000/home')
-                chartData = response.data.data
+    //         async function getData() {
+    //             const response = await axios.get('http://localhost:5000/home')
+    //             chartData = response.data.data
 
-                setData(chartData.counts)
-            }
-            getData()
-        }catch (e){
-            console.error(e)
-        }
-    }, []);
-    console.log(data)
+    //             setData(chartData.counts)
+    //         }
+    //         getData()
+    //     }catch (e){
+    //         console.error(e)
+    //     }
+    // }, []);
+    // console.log(data)
 
     // make function that follows rechart's data format
     // const daily = [
@@ -43,18 +42,21 @@ export default function CasesChart() {
     //         "newcases": cases,
     //     }
     // ]
+
     
+    // console.log(data)
+
     var dailyArr=[]
     function reformatDaily() {
         let a;
-        for(a in data.daily){
+        for(a in data.counts.daily){
             dailyArr.push(
                 {"date":dateFormat(a,"mediumDate"), 
-                "New Cases": data.daily[a].newCase,
-                "Recoveries": data.daily[a].recovery,
-                "Deaths": data.daily[a].death,
+                "New Cases": data.counts.daily[a].newCase,
+                "Recoveries": data.counts.daily[a].recovery,
+                "Deaths": data.counts.daily[a].death,
                 // "Cumulative Deaths up to this Day": data.daily[a].cumulative,
-                "Cumulative": data.daily[a].cumulative,
+                "Cumulative": data.counts.daily[a].cumulative,
                 }
             )       
         }
@@ -81,7 +83,7 @@ export default function CasesChart() {
 
     return (
             <div className = "main-chart">
-                <ResponsiveContainer width="100%" height="100%">
+                <ResponsiveContainer  width="100%" height="100%">
                     <LineChart
                     width={1150}
                     height={340}

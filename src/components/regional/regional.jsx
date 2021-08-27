@@ -3,31 +3,34 @@ import axios from 'axios'
 import { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, CustomTooltip, Legend, ResponsiveContainer } from 'recharts';
 import RegionalTable from './regionalTable';
 import '../../styles/regional.css'
+import regionalCaseData from './regionalCaseData';
 
 const Regional = (props) => {
 
-    const [totals, setTotals] = useState([])
-    const [daily, setDaily] = useState([])
-
     const numFormatter = new Intl.NumberFormat('en-US')
 
-    useEffect(() => {
-        console.log("In regional page")
-        try {
-            const getData = async() => {
-                const response = await axios.get('http://localhost:5000/regional')
-                setTotals(response.data.data.totals)
-                setDaily(response.data.data.daily)
-            }
-            getData()
-        }
-        catch(err) {
-            console.log(err)
-        }
-    }, [])
+    // const [totals, setTotals] = useState([])
+    // const [daily, setDaily] = useState([])
 
-    console.log(totals)
-    console.log(daily)
+    // useEffect(() => {
+    //     console.log("In regional page")
+    //     try {
+    //         const getData = async() => {
+    //             const response = await axios.get('http://localhost:5000/regional')
+    //             setTotals(response.data.data.totals)
+    //             setDaily(response.data.data.daily)
+    //         }
+    //         getData()
+    //     }
+    //     catch(err) {
+    //         console.log(err)
+    //     }
+    // }, [])
+
+    const totals = regionalCaseData.totals
+    const daily = regionalCaseData.daily
+    // console.log(totals)
+    // console.log(daily)
 
     const CustomizedAxisTick = (props) => {
         const { x, y, payload } = props;

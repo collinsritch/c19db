@@ -149,8 +149,8 @@ const Vaccinations = () => {
                     <div>
                         <h2 className="heading-title">Herd Immunity</h2>
                         <div className="herd-immunity-container">
-                            <p>The average number of doses administered in the last 5 days is <b>580,043</b>.</p>
-                            <p>At this rate, it will take about <b>5.5 months (January 2022)</b> to fully vaccinate 70% of the Filipino population and achieve Herd Immunity.</p>
+                            <p>The average number of doses administered in the last 5 days is <b>496,869</b>.</p>
+                            <p>At this rate, it will take about <b>7 months (April 2022)</b> to fully vaccinate 70% of the Filipino population and achieve Herd Immunity.</p>
                         </div>
                     </div>
 

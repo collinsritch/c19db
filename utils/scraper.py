@@ -39,17 +39,17 @@ def getNews(strDate):
 	news[strDate] = newsList
 
 # Main function 
-day = 1
-startDate = f'2020-12-{day}'
+day = 11
+startDate = f'2021-08-{day}'
 
-while day < 32:
-	strDate = f'2020-12-{day}'
+while day < 19:
+	strDate = f'2021-08-{day}'
 	if(len(str(day)) == 1):
-		strDate = f'2020-12-0{day}'
+		strDate = f'2021-08-0{day}'
 	getNews(strDate)
 	day = day + 1
 
-endDate = f'2020-12-{day-1}'
+endDate = f'2021-08-{day-1}'
 # Write as json file
 with open(f'news_events_{startDate}_{endDate}.json', 'w') as json_file:
 	json.dump(news, json_file)

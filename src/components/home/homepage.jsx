@@ -33,8 +33,8 @@ function Home() {
                 </div>
 
                 <div className="vax-page-link">
-                    <a id="vax-link-a" href="/vaccinations">
-                        <h3>News</h3>
+                    <a id="vax-link-a" href="/news">
+                        <h3>Timeline And Events</h3>
                         <KeyboardArrowRightIcon />
                     </a>
                 </div>
@@ -50,9 +50,20 @@ function Home() {
                         <KeyboardArrowRightIcon />
                     </a>
                 </div>
+
+                <h2 id="vax-header" style={{ marginLeft: "7.8%", marginBottom: "1rem", marginTop: "2rem" }}>Regional Cases Overview</h2>
+                <RegionalOverview />
+
+                <div className="vax-page-link">
+                    <a id="vax-link-a" href="/regional">
+                        <h3>Regional Statistics And Analyses</h3>
+                        <KeyboardArrowRightIcon />
+                    </a>
+                </div>
+
+                <Information />
+
             </div>
-            <RegionalOverview />
-            <Information />
         </>
     );
 }

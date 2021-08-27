@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 import '../../styles/regionalOverview.css'
 import RegionalPieChart from './regionalPieChart'
@@ -74,9 +73,9 @@ const RegionalOverview = (props) => {
 
     return(
         <>
-            <div className="heading">
+            {/* <div className="heading">
                 <h1>Regional Cases Overview</h1>
-            </div>
+            </div> */}
 
             <div className="regional-overview-container">
                 <div className="region-container region-container1">              
@@ -101,12 +100,11 @@ const RegionalOverview = (props) => {
 
             </div>  
 
-            <div className="see-more-regional">
+            {/* <div className="see-more-regional">
                 <a href="/regional"><h3> Regional Statistics And Analyses </h3></a>
-            </div>
+            </div> */}
         </>
     )
 }
-
 
 export default RegionalOverview
